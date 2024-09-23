@@ -1,0 +1,16 @@
+version: "3"
+tasks:
+  install-deps:
+    cmds:
+      - go mod tidy
+
+  build:
+    desc: "Build the app"
+    deps: [install-deps]
+    cmds:
+      - go build -o ./bin/microstackd ./cmd/microstackd/microstackd.go
+
+  clean:
+    desc: "Clean up"
+    cmds:
+      - rm -f bin/*
